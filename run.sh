@@ -16,6 +16,7 @@ fi
 sleep 10
 
 filename=output-$(date +%s).json
+zip -r output.zip
 /tmp/AzureHound/azurehound --system-id list -o $filename
 az login --identity
 az storage blob upload --account-name $AZ_STORAGE_ACCOUNT --container-name $AZ_STORAGE_CONTAINER --name $filename --file $filename --auth-mode login --overwrite
